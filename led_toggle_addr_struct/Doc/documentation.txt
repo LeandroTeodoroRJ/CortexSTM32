@@ -1,0 +1,10 @@
+**** DOCUMENTATION FILE ****
+
+PROJECT FILE STRUCTURE
+\Base_folder
+	\Src
+		main.c    ::    Main source code
+	\Inc
+	\Startup
+		startup_stm32f411retx.s    ::    Vector table list
+	\Doc    ::    Documentation folder
