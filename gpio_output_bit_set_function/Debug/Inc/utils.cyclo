@@ -1,0 +1,4 @@
+../Inc/utils.c:28:6:bit_set	1
+../Inc/utils.c:33:6:bit_reset	1
+../Inc/utils.c:38:6:bit_toggle	1
+../Inc/utils.c:43:6:bit_mask	1
