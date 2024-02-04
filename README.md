@@ -17,5 +17,7 @@ adc_continuos_conversion  ::  ADC1 configured as continuos conversion.\
 adc_usrt_refac  ::  Program to refactory and test ADC and USART drivers.\
 systick_delay  ::  It use the Cortex M4 systick module to create delay time.\
 timers ::  Example how it use timer 2 module.\
-output_compare  ::  How it toggle led with timer compare module.
+output_compare  ::  How it toggle led with timer compare module.\
+input_compare  ::  It take a sample time with a external source.\
+input_interrupt  ::  It use the GPIO with interrupt EXTI NVIC.
 
