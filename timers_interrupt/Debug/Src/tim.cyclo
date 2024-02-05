@@ -1,0 +1,3 @@
+/home/leandro/DADOS/Projetos/STM32CubeIDE/workspace_1.13.1/chip_headers/CMSIS/Include/core_cm4.h:1684:22:__NVIC_EnableIRQ	2
+../Src/tim.c:15:6:tim2_1hz_init	1
+../Src/tim.c:34:6:tim2_1hz_interrupt_init	1
