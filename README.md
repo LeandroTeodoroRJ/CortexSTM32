@@ -29,5 +29,6 @@ input_interrupt  ::  It use the GPIO with interrupt EXTI NVIC.\
 usart_interrupt  ::  How it use usart with interrupt.\
 adc_interrupt  ::  Send a serial byte on ADC interrupt conversiion.\
 systick_interrupt  ::  Creating delay time with systick interrupt.\
-timers_interrupt  ::  How it use a time event interrupt on timer2.
+timers_interrupt  ::  How it use a time event interrupt on timer2.\
+usart_dma  ::  How it use the DMA for transfer a data to USART2.
 
