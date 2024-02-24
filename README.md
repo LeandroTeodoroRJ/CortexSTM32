@@ -31,4 +31,8 @@ adc_interrupt  ::  Send a serial byte on ADC interrupt conversiion.\
 systick_interrupt  ::  Creating delay time with systick interrupt.\
 timers_interrupt  ::  How it use a time event interrupt on timer2.\
 usart_dma  ::  How it use the DMA for transfer a data to USART2.\
-I2C_adxl345_accelerometer  ::  Obtain the ADXL345 acelerometer axis values.
+I2C_adxl345_accelerometer  ::  Obtain the ADXL345 acelerometer axis values. \
+SPI_adxl345_accelerometer  ::  Using ADXL acelerometer with SPI interface.
+
+## Last Updated Drivers Versions
+ADC  ::  Ver 1.0  ::  adc_usrt_refac
