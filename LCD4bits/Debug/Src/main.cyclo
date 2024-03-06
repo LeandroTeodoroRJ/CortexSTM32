@@ -1,0 +1,7 @@
+../Src/main.c:47:5:main	1
+../Src/main.c:65:6:LCD_Init	1
+../Src/main.c:84:6:GPIO_Init	1
+../Src/main.c:93:6:LCD_nibble_write	2
+../Src/main.c:110:6:delayMs	3
+../Src/main.c:117:6:LCD_command	2
+../Src/main.c:129:6:LCD_data	1
