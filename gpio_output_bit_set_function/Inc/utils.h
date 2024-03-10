@@ -17,11 +17,11 @@
  * Other Notes: No
  * Code Structure Comments:
  * (1)Set a one bit in register
- * void bit_set(__IO uint32_t *reg, uint32_t bit);
+ * 		void bit_set(__IO uint32_t *reg, uint32_t bit);
  * (2)Reset a one bit in register
- * void bit_reset(__IO uint32_t *reg, uint32_t bit);
+ * 		void bit_reset(__IO uint32_t *reg, uint32_t bit);
  * (3)Toggle a bit in register
- * void bit_toggle(__IO uint32_t *reg, uint32_t bit);
+ * 		void bit_toggle(__IO uint32_t *reg, uint32_t bit);
  *
  *
  */

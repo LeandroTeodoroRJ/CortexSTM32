@@ -1,0 +1,4 @@
+../Src/gpio.c:12:6:enable_gpio_clock	7
+../Src/gpio.c:33:6:gpio_config	1
+../Src/gpio.c:39:6:gpio_load_value	1
+../Src/gpio.c:43:6:gpio_bit_toggle	1

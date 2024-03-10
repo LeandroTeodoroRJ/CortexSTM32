@@ -37,3 +37,4 @@ LCD4bits  ::  Using LCD with 4 data lines configuration.
 
 ## Last Updated Drivers Versions
 ADC  ::  Ver 1.0  ::  adc_usrt_refac
+GPIO ::  Ver 1.1  ::  gpio_output_bit_set_function
