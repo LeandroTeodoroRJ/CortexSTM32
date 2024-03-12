@@ -31,7 +31,7 @@ void enable_gpio_clock(uint8_t port){
 }
 
 void gpio_config(GPIO_TypeDef *pGPIO, uint32_t direction_mode, uint32_t pin_number){
-	pGPIO->MODER &=~ (11 << pin_number*2);
+	pGPIO->MODER &=~ ((uint32_t)3 << pin_number*2);
 	pGPIO->MODER |= (direction_mode << pin_number*2);
 
 }
@@ -58,10 +58,11 @@ uint32_t read_gpio_pin(GPIO_TypeDef *pGPIO, uint32_t pin_number){
 
 void alternate_function_setup(GPIO_TypeDef *pGPIO, uint32_t pin_number, uint32_t alternate_function_value){
 	if (pin_number > PIN7){
-		pGPIO->AFR[1] &=~ (1111 << pin_number*4);  //Clear all AFR bits of pin
+		pin_number = pin_number - 8;
+		pGPIO->AFR[1] &=~ ((uint32_t)15 << pin_number*4);  //Clear all AFR bits of pin
 		pGPIO->AFR[1] |=  (alternate_function_value << pin_number*4);  //Set alternate value
 	}else{
-		pGPIO->AFR[0] &=~ (1111 << pin_number*4);  //Clear all AFR bits of pin
+		pGPIO->AFR[0] &=~ ((uint32_t)15 << pin_number*4);  //Clear all AFR bits of pin
 		pGPIO->AFR[0] |=  (alternate_function_value << pin_number*4);  //Set alternate value
 	}
 }

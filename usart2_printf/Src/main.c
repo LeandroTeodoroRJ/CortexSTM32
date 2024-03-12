@@ -20,10 +20,10 @@
  *
  */
 
+#include <gpio_a.h>
 #include <stdio.h>
 #include <stdint.h>
 #include "stm32f4xx.h"
-#include "gpio.h"
 
 #define GPIOAEN			(1U<<0)
 #define UART2EN			(1U<<17)
