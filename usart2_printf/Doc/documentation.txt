@@ -1,0 +1,20 @@
+**** DOCUMENTATION FILE ****
+
+NOTES
+(1) You must include the include path in
+project properties -> C/C++ general -> Path and Symbols -> Includes
+(2) See the stm32f4xx.h, you must include your processor definition STM32F411xE in
+project properties -> C/C++ general -> Path and Symbols -> Symbols (Add...)
+Code Structure Comments: None
+(3) The USART2 is connected to USB converter in Nucleo Board.
+
+PROJECT FILE STRUCTURE
+\Base_folder
+	\Src
+		main.c    ::    Main source code
+	\Inc
+	\Startup
+		startup_stm32f411retx.s    ::    Vector table list
+	\Doc    ::    Documentation folder
+\chip_headers\CMSIS\Device\ST\STM32F4xx\Include
+	stm32f4xx.h    ::    Original STM32 file processor header 	

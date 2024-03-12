@@ -17,6 +17,7 @@ usart2_tx  ::  Simple example how to use usart.\
 usart2_modular  ::  Driver code for usart2.\
 chip_headers  ::  Original STM headers files to STM32.\
 usart2_rx  ::  USART2 transmitter and reicever test.\
+usart2_printf  ::  Sending a string with printf function. \
 usart2_driver  ::  USART2 driver files and test program.\
 adc_single_conversion  ::  Example how it use ADC1 as single conversion mode.\
 adc_continuos_conversion  ::  ADC1 configured as continuos conversion.\
@@ -38,4 +39,5 @@ LCD4bits  ::  Using LCD with 4 data lines configuration.
 ## Last Updated Drivers Versions
 ADC  ::  Ver 1.0  ::  adc_usrt_refac \
 GPIO ::  Ver 1.1  ::  gpio_output_bit_set_function  \
-GPIO ::  Ver 1.2  ::  gpio_input
+GPIO ::  Ver 1.2  ::  gpio_input \
+GPIO ::  Ver 1.3  ::  usart2_printf
