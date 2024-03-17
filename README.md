@@ -40,3 +40,4 @@ LCD4bits  ::  Using LCD with 4 data lines configuration.
 ADC  ::  Ver 1.0  ::  adc_usrt_refac \
 GPIO ::  Ver 1.3.1  ::  usart2_printf \
 LCD  ::  Ver 1.1  ::  LCD4bits
+USART  ::  Ver 1.2  ::  usart2_driver

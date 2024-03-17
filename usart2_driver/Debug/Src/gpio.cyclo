@@ -1,0 +1,7 @@
+../Src/gpio.c:12:6:enable_gpio_clock	7
+../Src/gpio.c:33:6:gpio_config	1
+../Src/gpio.c:39:6:gpio_load_value	1
+../Src/gpio.c:43:6:gpio_bit_toggle	1
+../Src/gpio.c:47:6:digital_pin_state	2
+../Src/gpio.c:55:10:read_gpio_pin	1
+../Src/gpio.c:59:6:alternate_function_setup	2

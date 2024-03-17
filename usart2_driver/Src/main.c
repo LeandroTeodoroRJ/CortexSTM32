@@ -7,6 +7,7 @@
  * Version: 1.0
  * Last Update: 26.01.24
  * Current: Yes
+ * Dependences: GPIO Ver 1.3.1 ; USART Ver 1.2
  * Maintainer: leandroteodoro.rj@gmail.com
  * Architecture: MCU STM32F411re
  * Compile/Interpreter: STM Cube IDE Ver:1.13.1
@@ -21,30 +22,47 @@
 
 #include <stdio.h>
 #include <stdint.h>
+#include <usart.h>
+#include "gpio.h"
 #include "stm32f4xx.h"
-#include "uart.h"
 
-#define GPIOAEN			(1U<<0)
-#define GPIOA_5			(1U<<5)
-#define LED_PIN			GPIOA_5
+#define UART_BAUDRATE	115200
 
 char key;
 
 int main(void)
 {
-	// Enable clock to GPIOA
-	RCC->AHB1ENR |= GPIOAEN;
+	// Enable clock to GPIOA --LED
+	enable_gpio_clock(PORT_A);
 
 	// Set PA5 as output
-	GPIOA->MODER |= (1U << 10);
-	GPIOA->MODER &=~(1U << 11);
+	gpio_config(GPIOA, OUTPUT_MODE, PIN5);
 
-	uart2_rxtx_init();
+
+	/****************Configure usart gpio pin***************/
+	/*Enable clock access to gpioa */
+	enable_gpio_clock(PORT_A);
+
+	/*Set PA2 mode to alternate function mode*/
+	gpio_config(GPIOA, ALTERNATE_FUNCTION, PIN2);
+
+	/*Set PA2 alternate function type to UART_TX (AF07)*/
+	alternate_function_setup(GPIOA, PIN2, 07);
+
+	/*Set PA3 mode to alternate function mode*/
+	gpio_config(GPIOA, ALTERNATE_FUNCTION, PIN3);
+
+	/*Set PA3 alternate function type to UART_TX (AF07)*/
+	alternate_function_setup(GPIOA, PIN3, 07);
+
+	enable_usart_clock(USART_2);
+	uart2_rxtx_init(USART2, UART_BAUDRATE);
+	output_default_usart_stream(USART2);	//To use with printf funcion
 	while(1)
 	{
-		key = uart2_read();
+		key = usart_read(USART2);
 		if (key == '1'){
-			GPIOA->ODR ^= LED_PIN;  //Toggle led when special key received.
+			gpio_bit_toggle(GPIOA, PIN5);	//Led pin
 			printf("You receiver a special key. \n");
 		}
 	}
