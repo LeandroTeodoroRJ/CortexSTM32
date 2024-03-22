@@ -1,4 +1,5 @@
 "./Src/adxl345.o"
+"./Src/gpio.o"
 "./Src/i2c.o"
 "./Src/main.o"
 "./Src/syscalls.o"

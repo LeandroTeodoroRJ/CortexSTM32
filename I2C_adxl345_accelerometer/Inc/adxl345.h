@@ -36,11 +36,11 @@
 #define   DEVICE_ADDR    			(0x53)	//Alternate I2C address - SDO/ALT ADDRESS pin grounding (I2C section)
 
 #define		FOUR_G					(0x01)  //Constant to operate at 4G
-#define		RESET					(0x00)  //Value to reset device
+#define		ADXL_RESET				(0x00)  //Value to reset device
 #define     SET_MEASURE_B		    (0x08)  //0b00001000 - Set bit4 in power_ctl register device
 
 
-void adxl_init (void);
+void adxl_init ();
 void adxl_read_values (uint8_t reg);
 
 #endif /* ADXL345_H_ */

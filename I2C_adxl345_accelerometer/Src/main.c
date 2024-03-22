@@ -23,7 +23,9 @@
  *	VCC			5V
  *	SDA			PB9
  *	SCL			PB8
- *
+ *	4- You can test this project putting the acelerometer board in
+ *	ortogonals positions (x, y, z). Then you will see 1g in
+ *	value variables in live expression window.
  */
 
 #include <stdio.h>
@@ -31,6 +33,7 @@
 #include "stm32f4xx.h"
 #include "i2c.h"
 #include "adxl345.h"
+#include "gpio.h"
 
 
 int16_t x,y,z;
@@ -39,6 +42,28 @@ extern uint8_t data_rec[6];  //Variable declared in adxl345.c
 
 int main(void)
 {
+
+	// GPIO Settup
+	// Enable clock acssess to GPIOB
+	enable_gpio_clock(PORT_B);
+
+	// Configuring alternate functions
+	// PB9 - AF04 (SDA Pin)
+	gpio_config(GPIOB, ALTERNATE_FUNCTION, PIN9);
+	alternate_function_setup(GPIOB, PIN9, 04);
+	// PB8 - AF04 (SCL Pin)
+	gpio_config(GPIOB, ALTERNATE_FUNCTION, PIN8);
+	alternate_function_setup(GPIOB, PIN8, 04);
+
+	// Set output type as open-drain
+	gpio_enable_open_drain(GPIOB, PIN8);
+	gpio_enable_open_drain(GPIOB, PIN9);
+
+	// Enable pull-ups to PB8 and PB9
+	gpio_pull_resistor_configure(GPIOB, PULL_UP, PIN8);
+	gpio_pull_resistor_configure(GPIOB, PULL_UP, PIN9);
+
+
 
 	adxl_init();
 
