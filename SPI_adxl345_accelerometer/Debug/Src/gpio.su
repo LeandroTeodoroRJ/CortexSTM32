@@ -1,0 +1,10 @@
+../Src/gpio.c:12:6:enable_gpio_clock	16	static
+../Src/gpio.c:33:6:gpio_config	24	static
+../Src/gpio.c:39:6:gpio_load_value	16	static
+../Src/gpio.c:43:6:gpio_bit_toggle	16	static
+../Src/gpio.c:47:6:digital_pin_state	24	static
+../Src/gpio.c:55:10:read_gpio_pin	16	static
+../Src/gpio.c:59:6:alternate_function_setup	24	static
+../Src/gpio.c:70:6:gpio_enable_open_drain	16	static
+../Src/gpio.c:74:6:gpio_disable_open_drain	16	static
+../Src/gpio.c:78:6:gpio_pull_resistor_configure	24	static

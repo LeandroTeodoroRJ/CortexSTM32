@@ -36,10 +36,8 @@
 
 
 #define		FOUR_G					(0x01)
-#define		RESET					(0x00)
+#define		ADXL_RESET					(0x00)
 #define     SET_MEASURE_B		    (0x08)
-
-
 
 
 void adxl_init (void);

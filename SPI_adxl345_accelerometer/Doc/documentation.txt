@@ -14,7 +14,7 @@ PROJECT FILE STRUCTURE
 		main.c    ::    Main source code
 		uart.c    ::    USART 2 driver functions
 		i2c.c	  ::	I2C driver source code
-		adxl345.c ::	Acelerometer driver
+		adxl345.c ::	Acelerometer driver for SPI interface
 		spi.c	  ::	SPI peripheral source driver
 	\Inc
 		uart.h    ::    USART 2 header declarations

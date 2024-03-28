@@ -1,21 +1,17 @@
 /*
  * adxl345.c
  *
- *  	Updated on: Feb 24, 2024
+ *  	Updated on: Mar 28, 2024
  *      Author: leandro
  */
 
 #include "adxl345.h"
 
-
 #define   MULTI_BYTE_EN				0x40	//Multi byte enable
 #define	  READ_OPERATION		    0x80
 
-
-
 void adxl_read(uint8_t address, uint8_t * rxdata)
 {
-
 	  /*Set read operation*/
 	  address |= READ_OPERATION;
 
@@ -23,18 +19,19 @@ void adxl_read(uint8_t address, uint8_t * rxdata)
 	  address |= MULTI_BYTE_EN;
 
 	  /*Pull cs line low to enable slave*/
-	  cs_enable();
+	  spi_chip_select_line(GPIOA, PIN9, LINE_LOW);
+
 
       /*Send address*/
-	  spi1_transmit(&address,1);
+	  spi_transmit(SPI1, &address,1);
 
 	  /*Read 6 bytes */
-	  spi1_receive(rxdata,6);
+	  spi_receive(SPI1, rxdata,6);
 
 	  /*Pull cs line high to disable slave*/
-	  cs_disable();
-
+	  spi_chip_select_line(GPIOA, PIN9, LINE_HIGH);
 }
+
 
 void adxl_write (uint8_t address, uint8_t value)
 {
@@ -47,32 +44,28 @@ void adxl_write (uint8_t address, uint8_t value)
   data[1] = value;
 
   /*Pull cs line low to enable slave*/
-  cs_enable();
+  spi_chip_select_line(GPIOA, PIN9, LINE_LOW);
+
 
   /*Transmit data and address*/
-  spi1_transmit(data, 2);
+  spi_transmit(SPI1, data, 2);
 
   /*Pull cs line high to disable slave*/
-  cs_disable();
-
-
+  spi_chip_select_line(GPIOA, PIN9, LINE_HIGH);
 }
-
 
 
 void adxl_init (void)
 {
-	/*Enable SPI gpio*/
-	spi_gpio_init();
-
 	/*Config SPI*/
-	spi1_config();
+	enable_spi_clock(CLK_SPI1);
+	spi_config(SPI1, SPI_MASTER, POLARITY_1_IDLE, CAPTURE_SECOND_CLOCK);
 
 	/*Set data format range to +-4g*/
 	adxl_write (DATA_FORMAT_R, FOUR_G);
 
 	/*Reset all bits*/
-	adxl_write (POWER_CTL_R, RESET);
+	adxl_write (POWER_CTL_R, ADXL_RESET);
 
 	/*Configure power control measure bit*/
 	adxl_write (POWER_CTL_R, SET_MEASURE_B);
