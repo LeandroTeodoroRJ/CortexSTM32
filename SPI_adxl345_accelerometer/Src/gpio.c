@@ -53,7 +53,7 @@ void digital_pin_state(GPIO_TypeDef *pGPIO, uint32_t pin_number, uint8_t state){
 }
 
 uint32_t read_gpio_pin(GPIO_TypeDef *pGPIO, uint32_t pin_number){
-	return (pGPIO->IDR & pin_number);
+	return (pGPIO->IDR & (1U << pin_number));
 }
 
 void alternate_function_setup(GPIO_TypeDef *pGPIO, uint32_t pin_number, uint32_t alternate_function_value){

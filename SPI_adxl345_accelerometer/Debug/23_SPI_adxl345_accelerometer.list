@@ -39,13 +39,13 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING, OCTETS
  17 .debug_macro  0000edbb  00000000  00000000  00012344  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 18 .debug_line   00001841  00000000  00000000  000210ff  2**0
+ 18 .debug_line   00001844  00000000  00000000  000210ff  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 19 .debug_str    00053c3a  00000000  00000000  00022940  2**0
+ 19 .debug_str    00053c3a  00000000  00000000  00022943  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 20 .debug_frame  000003f8  00000000  00000000  0007657c  2**2
+ 20 .debug_frame  000003f8  00000000  00000000  00076580  2**2
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 21 .debug_line_str 00000081  00000000  00000000  00076974  2**0
+ 21 .debug_line_str 00000081  00000000  00000000  00076978  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
 
 Disassembly of section .text:
@@ -910,7 +910,7 @@ void digital_pin_state(GPIO_TypeDef *pGPIO, uint32_t pin_number, uint8_t state){
 080009a2 <alternate_function_setup>:
 
 uint32_t read_gpio_pin(GPIO_TypeDef *pGPIO, uint32_t pin_number){
-	return (pGPIO->IDR & pin_number);
+	return (pGPIO->IDR & (1U << pin_number));
 }
 
 void alternate_function_setup(GPIO_TypeDef *pGPIO, uint32_t pin_number, uint32_t alternate_function_value){
