@@ -46,10 +46,10 @@ int main(void){
 	gpio_config(GPIOC, INPUT_MODE, BTN_ONBOARD);
 
 	while(1){
-		if (read_gpio_pin(GPIOC, PIN13) == BUTTON_PRESSED){
-			digital_pin_state(GPIOA, PIN5, LED_ON);
+		if (read_gpio_pin(GPIOC, BTN_ONBOARD) == BUTTON_PRESSED){
+			digital_pin_state(GPIOA, LED_ONBOARD, LED_ON);
 		}else{
-			digital_pin_state(GPIOA, PIN5, LED_OFF);
+			digital_pin_state(GPIOA, LED_ONBOARD, LED_OFF);
 		}
 	}
 }

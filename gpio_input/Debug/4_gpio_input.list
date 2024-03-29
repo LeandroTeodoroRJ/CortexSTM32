@@ -315,26 +315,26 @@ int main(void){
  8000338:	f7ff ff96 	bl	8000268 <gpio_config>
 
 	while(1){
-		if (read_gpio_pin(GPIOC, PIN13) == BUTTON_PRESSED){
+		if (read_gpio_pin(GPIOC, BTN_ONBOARD) == BUTTON_PRESSED){
  800033c:	210d      	movs	r1, #13
  800033e:	480a      	ldr	r0, [pc, #40]	; (8000368 <main+0x50>)
  8000340:	f7ff ffd7 	bl	80002f2 <read_gpio_pin>
  8000344:	4603      	mov	r3, r0
  8000346:	2b00      	cmp	r3, #0
  8000348:	d105      	bne.n	8000356 <main+0x3e>
-			digital_pin_state(GPIOA, PIN5, LED_ON);
+			digital_pin_state(GPIOA, LED_ONBOARD, LED_ON);
  800034a:	2201      	movs	r2, #1
  800034c:	2105      	movs	r1, #5
  800034e:	4805      	ldr	r0, [pc, #20]	; (8000364 <main+0x4c>)
  8000350:	f7ff ffab 	bl	80002aa <digital_pin_state>
  8000354:	e7f2      	b.n	800033c <main+0x24>
 		}else{
-			digital_pin_state(GPIOA, PIN5, LED_OFF);
+			digital_pin_state(GPIOA, LED_ONBOARD, LED_OFF);
  8000356:	2200      	movs	r2, #0
  8000358:	2105      	movs	r1, #5
  800035a:	4802      	ldr	r0, [pc, #8]	; (8000364 <main+0x4c>)
  800035c:	f7ff ffa5 	bl	80002aa <digital_pin_state>
-		if (read_gpio_pin(GPIOC, PIN13) == BUTTON_PRESSED){
+		if (read_gpio_pin(GPIOC, BTN_ONBOARD) == BUTTON_PRESSED){
  8000360:	e7ec      	b.n	800033c <main+0x24>
  8000362:	bf00      	nop
  8000364:	40020000 	.word	0x40020000
