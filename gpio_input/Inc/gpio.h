@@ -4,8 +4,8 @@
  * Description: Driver for GPIO port
  * Hostpage: https://github.com/LeandroTeodoroRJ/CortexSTM32
  * Stable: Yes
- * Version: 1.2
- * Last Update: 10.03.24
+ * Version: 1.2.2
+ * Last Update: 28.03.24
  * Current: Yes
  * Maintainer: leandroteodoro.rj@gmail.com
  * Architecture: MCU STM32F411re

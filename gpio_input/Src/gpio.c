@@ -1,7 +1,7 @@
 /*
  * gpio.c
  *
- *  	Updated on: Mar 10, 2024
+ *  	Updated on: Mar 28, 2024
  *      Author: leandro
  */
 
@@ -31,7 +31,7 @@ void enable_gpio_clock(uint8_t port){
 }
 
 void gpio_config(GPIO_TypeDef *pGPIO, uint32_t direction_mode, uint32_t pin_number){
-	pGPIO->MODER &=~ (11 << pin_number*2);
+	pGPIO->MODER &=~ ((uint32_t)3 << pin_number*2);		//3d -- 0b11
 	pGPIO->MODER |= (direction_mode << pin_number*2);
 
 }
@@ -41,7 +41,7 @@ void gpio_load_value(GPIO_TypeDef *pGPIO, uint32_t value){
 }
 
 void gpio_bit_toggle(GPIO_TypeDef *pGPIO, uint32_t pin_number){
-	pGPIO->ODR ^= (1 << pin_number);
+	pGPIO->ODR ^= (1 << pin_number);	//Exclusive OR
 }
 
 void digital_pin_state(GPIO_TypeDef *pGPIO, uint32_t pin_number, uint8_t state){
@@ -53,6 +53,6 @@ void digital_pin_state(GPIO_TypeDef *pGPIO, uint32_t pin_number, uint8_t state){
 }
 
 uint32_t read_gpio_pin(GPIO_TypeDef *pGPIO, uint32_t pin_number){
-	return (pGPIO->IDR & pin_number);
+	return (pGPIO->IDR & (1U << pin_number));
 }
 

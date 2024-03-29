@@ -10,7 +10,7 @@
  * Maintainer: leandroteodoro.rj@gmail.com
  * Architecture: MCU STM32F411re
  * Compile/Interpreter: STM Cube IDE Ver:1.13.1
- * Dependences: GPIO version 1.2
+ * Dependences: GPIO version 1.2.2
  * Access: Public
  * Changelog: No
  * Readme and Documents: No
@@ -28,8 +28,11 @@
 #include "stm32f4xx.h"
 #include "gpio.h"
 
-#define LED_PIN		PIN5
-#define BTN_PIN		PIN13
+#define LED_ONBOARD		PIN5
+#define BTN_ONBOARD		PIN13
+#define BUTTON_PRESSED	0
+#define LED_ON			SET
+#define LED_OFF			RESET
 
 int main(void){
 	// Enable clock
@@ -37,24 +40,16 @@ int main(void){
 	enable_gpio_clock(PORT_C);
 
 	// Configure PA5 as output
-	gpio_config(
-			GPIOA,
-			OUTPUT_MODE,
-			PIN5
-			);
+	gpio_config(GPIOA, OUTPUT_MODE,	LED_ONBOARD);
 
 	// Configure PC13 as input
-	gpio_config(
-			GPIOC,
-			INPUT_MODE,
-			PIN13
-			);
+	gpio_config(GPIOC, INPUT_MODE, BTN_ONBOARD);
 
 	while(1){
-		if (read_gpio_pin(GPIOC, PIN13)){
-			digital_pin_state(GPIOA, PIN5, SET);	// Led on, button not pressed
+		if (read_gpio_pin(GPIOC, PIN13) == BUTTON_PRESSED){
+			digital_pin_state(GPIOA, PIN5, LED_ON);
 		}else{
-			digital_pin_state(GPIOA, PIN5, RESET);	// Led off, button pressed, input pin = 0.
+			digital_pin_state(GPIOA, PIN5, LED_OFF);
 		}
 	}
 }
