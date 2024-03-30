@@ -1,0 +1,11 @@
+../Src/usart.c:31:6:uart_rxtx_init	1
+../Src/usart.c:45:6:usart_read	2
+../Src/usart.c:54:6:usart_write	2
+../Src/usart.c:63:5:__io_putchar	1
+../Src/usart.c:69:13:uart_set_baudrate	1
+../Src/usart.c:73:17:compute_uart_bd	1
+../Src/usart.c:77:6:enable_usart_clock	4
+../Src/usart.c:89:6:output_default_usart_stream	1
+../Src/usart.c:93:6:enable_usart_rx_interrupt	1
+../Src/usart.c:98:6:disable_usart_rx_interrupt	1
+../Src/usart.c:104:10:usart_data_ready_read	1

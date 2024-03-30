@@ -33,34 +33,34 @@ $(wildcard ../makefile.init) \
 $(wildcard ../makefile.targets) \
 
 
-BUILD_ARTIFACT_NAME := 17_usart_interrupt
+BUILD_ARTIFACT_NAME := 24_usart_interrupt
 BUILD_ARTIFACT_EXTENSION := elf
 BUILD_ARTIFACT_PREFIX :=
 BUILD_ARTIFACT := $(BUILD_ARTIFACT_PREFIX)$(BUILD_ARTIFACT_NAME)$(if $(BUILD_ARTIFACT_EXTENSION),.$(BUILD_ARTIFACT_EXTENSION),)
 
 # Add inputs and outputs from these tool invocations to the build variables 
 EXECUTABLES += \
-17_usart_interrupt.elf \
+24_usart_interrupt.elf \
 
 MAP_FILES += \
-17_usart_interrupt.map \
+24_usart_interrupt.map \
 
 SIZE_OUTPUT += \
 default.size.stdout \
 
 OBJDUMP_LIST += \
-17_usart_interrupt.list \
+24_usart_interrupt.list \
 
 
 # All Target
 all: main-build
 
 # Main-build Target
-main-build: 17_usart_interrupt.elf secondary-outputs
+main-build: 24_usart_interrupt.elf secondary-outputs
 
 # Tool invocations
-17_usart_interrupt.elf 17_usart_interrupt.map: $(OBJS) $(USER_OBJS) /home/leandro/DADOS/Projetos/STM32CubeIDE/workspace_1.13.1/17_usart_interrupt/STM32F411RETX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "17_usart_interrupt.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"/home/leandro/DADOS/Projetos/STM32CubeIDE/workspace_1.13.1/17_usart_interrupt/STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="17_usart_interrupt.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+24_usart_interrupt.elf 24_usart_interrupt.map: $(OBJS) $(USER_OBJS) /home/leandro/DADOS/Projetos/STM32CubeIDE/workspace_1.13.1/24_usart_interrupt/STM32F411RETX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "24_usart_interrupt.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"/home/leandro/DADOS/Projetos/STM32CubeIDE/workspace_1.13.1/24_usart_interrupt/STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="24_usart_interrupt.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
@@ -69,14 +69,14 @@ default.size.stdout: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
 	@echo 'Finished building: $@'
 	@echo ' '
 
-17_usart_interrupt.list: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-objdump -h -S $(EXECUTABLES) > "17_usart_interrupt.list"
+24_usart_interrupt.list: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-objdump -h -S $(EXECUTABLES) > "24_usart_interrupt.list"
 	@echo 'Finished building: $@'
 	@echo ' '
 
 # Other Targets
 clean:
-	-$(RM) 17_usart_interrupt.elf 17_usart_interrupt.list 17_usart_interrupt.map default.size.stdout
+	-$(RM) 24_usart_interrupt.elf 24_usart_interrupt.list 24_usart_interrupt.map default.size.stdout
 	-@echo ' '
 
 secondary-outputs: $(SIZE_OUTPUT) $(OBJDUMP_LIST)
