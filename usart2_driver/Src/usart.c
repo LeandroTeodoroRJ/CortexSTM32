@@ -27,7 +27,7 @@ int __io_putchar(int ch);
 uint32_t *usart_stream;		//Global pointer to usart out stream function
 
 // Functions definitions
-void uart2_rxtx_init(USART_TypeDef *pUSART, uint32_t UsartBaudRate){
+void uart_rxtx_init(USART_TypeDef *pUSART, uint32_t UsartBaudRate){
 
 	/*Configure baudrate*/
 	uart_set_baudrate(pUSART,APB1_CLK,UsartBaudRate);
@@ -50,7 +50,7 @@ char usart_read(USART_TypeDef *pUSART){
 }
 
 
-void uart2_write(USART_TypeDef *pUSART, int ch){
+void usart_write(USART_TypeDef *pUSART, int ch){
   /*Make sure the transmit data register is empty*/
 	while(!(pUSART->SR & SR_TXE)){}
 
@@ -60,7 +60,7 @@ void uart2_write(USART_TypeDef *pUSART, int ch){
 
 //It's necessary to declare this function to use with printf
 int __io_putchar(int ch){
-	uart2_write((USART_TypeDef*) usart_stream, ch);
+	usart_write((USART_TypeDef*) usart_stream, ch);
 	return ch;
 }
 

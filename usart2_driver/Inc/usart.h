@@ -4,7 +4,7 @@
  * Description: Driver for USART2
  * Hostpage: https://github.com/LeandroTeodoroRJ/CortexSTM32
  * Stable: Yes
- * Version: 1.2
+ * Version: 1.2.2
  * Last Update: 17.03.24
  * Current: Yes
  * Maintainer: leandroteodoro.rj@gmail.com
@@ -21,14 +21,14 @@
  * 	void enable_usart_clock(uint8_t usart_number)	--Enable clock to usart
  * 		usart_number  ::  USART_1, USART_2 or USART_6
  *
- * 	void uart2_rxtx_init(USART_TypeDef *pUSART, uint32_t UsartBaudRate)  --Initialize USART
+ * 	void uart_rxtx_init(USART_TypeDef *pUSART, uint32_t UsartBaudRate)  --Initialize USART
  * 		pUSART :: Pointer to usart struct
  * 		UsartBaudRAte :: Baudrate value
  *
  * 	char usart_read(USART_TypeDef *pUSART)  --Return a char from usart
  * 		pUSART :: Pointer to usart struct
  *
- * 	void uart2_write(USART_TypeDef *pUSART, int ch)  --Send one char to USART
+ * 	void usart_write(USART_TypeDef *pUSART, int ch)  --Send one char to USART
  * 		pUSART :: Pointer to usart struct
  * 		ch :: char value
  *
@@ -51,9 +51,9 @@
 
 
 // Functions prototypes
-void uart2_rxtx_init(USART_TypeDef *pUSART, uint32_t UsartBaudRate);
+void uart_rxtx_init(USART_TypeDef *pUSART, uint32_t UsartBaudRate);
 char usart_read(USART_TypeDef *pUSART);
-void uart2_write(USART_TypeDef *pUSART, int ch);
+void usart_write(USART_TypeDef *pUSART, int ch);
 void enable_usart_clock(uint8_t usart_number);
 void output_default_usart_stream(USART_TypeDef *pUSART);
 

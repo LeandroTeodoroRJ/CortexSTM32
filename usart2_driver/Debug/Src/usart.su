@@ -1,6 +1,6 @@
-../Src/usart.c:30:6:uart2_rxtx_init	16	static
+../Src/usart.c:30:6:uart_rxtx_init	16	static
 ../Src/usart.c:44:6:usart_read	16	static
-../Src/usart.c:53:6:uart2_write	16	static
+../Src/usart.c:53:6:usart_write	16	static
 ../Src/usart.c:62:5:__io_putchar	16	static
 ../Src/usart.c:68:13:uart_set_baudrate	24	static
 ../Src/usart.c:72:17:compute_uart_bd	16	static

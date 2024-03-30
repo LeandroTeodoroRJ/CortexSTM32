@@ -56,7 +56,7 @@ int main(void)
 	alternate_function_setup(GPIOA, PIN3, 07);
 
 	enable_usart_clock(USART_2);
-	uart2_rxtx_init(USART2, UART_BAUDRATE);
+	uart_rxtx_init(USART2, UART_BAUDRATE);
 	output_default_usart_stream(USART2);	//To use with printf funcion
 	while(1)
 	{

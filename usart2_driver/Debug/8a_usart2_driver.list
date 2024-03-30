@@ -41,7 +41,7 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING, OCTETS
  18 .debug_line   00001e8e  00000000  00000000  000319da  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 19 .debug_str    00055bfe  00000000  00000000  00033868  2**0
+ 19 .debug_str    00055bfd  00000000  00000000  00033868  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
  20 .debug_frame  00000c0c  00000000  00000000  00089468  2**2
                   CONTENTS, READONLY, DEBUGGING, OCTETS
@@ -374,10 +374,10 @@ int main(void)
 	enable_usart_clock(USART_2);
  800038e:	2002      	movs	r0, #2
  8000390:	f000 f944 	bl	800061c <enable_usart_clock>
-	uart2_rxtx_init(USART2, UART_BAUDRATE);
+	uart_rxtx_init(USART2, UART_BAUDRATE);
  8000394:	f44f 31e1 	mov.w	r1, #115200	; 0x1c200
  8000398:	480d      	ldr	r0, [pc, #52]	; (80003d0 <main+0x84>)
- 800039a:	f000 f8c3 	bl	8000524 <uart2_rxtx_init>
+ 800039a:	f000 f8c3 	bl	8000524 <uart_rxtx_init>
 	output_default_usart_stream(USART2);	//To use with printf funcion
  800039e:	480c      	ldr	r0, [pc, #48]	; (80003d0 <main+0x84>)
  80003a0:	f000 f966 	bl	8000670 <output_default_usart_stream>
@@ -663,13 +663,13 @@ void *_sbrk(ptrdiff_t incr)
  800051c:	2000007c 	.word	0x2000007c
  8000520:	200001d0 	.word	0x200001d0
 
-08000524 <uart2_rxtx_init>:
+08000524 <uart_rxtx_init>:
 int __io_putchar(int ch);
 
 uint32_t *usart_stream;		//Global pointer to usart out stream function
 
 // Functions definitions
-void uart2_rxtx_init(USART_TypeDef *pUSART, uint32_t UsartBaudRate){
+void uart_rxtx_init(USART_TypeDef *pUSART, uint32_t UsartBaudRate){
  8000524:	b580      	push	{r7, lr}
  8000526:	b082      	sub	sp, #8
  8000528:	af00      	add	r7, sp, #0
@@ -679,7 +679,7 @@ void uart2_rxtx_init(USART_TypeDef *pUSART, uint32_t UsartBaudRate){
 	/*Configure baudrate*/
 	uart_set_baudrate(pUSART,APB1_CLK,UsartBaudRate);
  800052e:	683a      	ldr	r2, [r7, #0]
- 8000530:	4908      	ldr	r1, [pc, #32]	; (8000554 <uart2_rxtx_init+0x30>)
+ 8000530:	4908      	ldr	r1, [pc, #32]	; (8000554 <uart_rxtx_init+0x30>)
  8000532:	6878      	ldr	r0, [r7, #4]
  8000534:	f000 f84c 	bl	80005d0 <uart_set_baudrate>
 
@@ -734,10 +734,10 @@ char usart_read(USART_TypeDef *pUSART){
  800057a:	f85d 7b04 	ldr.w	r7, [sp], #4
  800057e:	4770      	bx	lr
 
-08000580 <uart2_write>:
+08000580 <usart_write>:
 
 
-void uart2_write(USART_TypeDef *pUSART, int ch){
+void usart_write(USART_TypeDef *pUSART, int ch){
  8000580:	b480      	push	{r7}
  8000582:	b083      	sub	sp, #12
  8000584:	af00      	add	r7, sp, #0
@@ -750,7 +750,7 @@ void uart2_write(USART_TypeDef *pUSART, int ch){
  800058e:	681b      	ldr	r3, [r3, #0]
  8000590:	f003 0380 	and.w	r3, r3, #128	; 0x80
  8000594:	2b00      	cmp	r3, #0
- 8000596:	d0f9      	beq.n	800058c <uart2_write+0xc>
+ 8000596:	d0f9      	beq.n	800058c <usart_write+0xc>
 
   /*Write to transmit data register*/
 	pUSART->DR	=  (ch & 0xFF);
@@ -773,12 +773,12 @@ int __io_putchar(int ch){
  80005ae:	b082      	sub	sp, #8
  80005b0:	af00      	add	r7, sp, #0
  80005b2:	6078      	str	r0, [r7, #4]
-	uart2_write((USART_TypeDef*) usart_stream, ch);
+	usart_write((USART_TypeDef*) usart_stream, ch);
  80005b4:	4b05      	ldr	r3, [pc, #20]	; (80005cc <__io_putchar+0x20>)
  80005b6:	681b      	ldr	r3, [r3, #0]
  80005b8:	6879      	ldr	r1, [r7, #4]
  80005ba:	4618      	mov	r0, r3
- 80005bc:	f7ff ffe0 	bl	8000580 <uart2_write>
+ 80005bc:	f7ff ffe0 	bl	8000580 <usart_write>
 	return ch;
  80005c0:	687b      	ldr	r3, [r7, #4]
 }
