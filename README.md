@@ -37,7 +37,7 @@ SPI_adxl345_accelerometer  ::  Using ADXL acelerometer with SPI interface. \
 LCD4bits  ::  Using LCD with 4 data lines configuration.
 
 ## Last Updated Drivers Versions
-ADC  ::  Ver 1.0  ::  adc_usrt_refac \
+ADC  ::  Ver 1.2  ::  adc_usrt_refac \
 GPIO ::  Ver 1.4  ::  I2C_adxl345_accelerometer \
 LCD  ::  Ver 1.1  ::  LCD4bits \
 USART  ::  Ver 1.3  ::  usart_interrupt \

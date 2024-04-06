@@ -25,21 +25,27 @@
 #include "uart.h"
 #include "adc.h"
 
-#define GPIOAEN			(1U<<0)
+#define GPIOAEN					(1U<<0)
+#define CHANNEL_1				1
+#define NUMBER_OF_GROUPS_1		1
 
 uint32_t sensor_value;
 
+void bios(void);
+
 int main(void)
 {
-	// Enable clock to GPIOA
-	RCC->AHB1ENR |= GPIOAEN;
+	bios();	//Start bios definitions
 
 	// Init the peripherals
+	enable_adc_clock();
 	uart2_rxtx_init();
-	pa1_adc_init();
+	add_sequence_group(SEQUENCE_1, CHANNEL_1);
+	sequence_length(NUMBER_OF_GROUPS_1);
+	enable_adc_module();
 
 	// Start the conversion
-	start_conversion();
+	start_continuos_conversion();
 
 	while(1)
 	{
@@ -47,4 +53,19 @@ int main(void)
 		printf("Sensor value: %d \n \r", (int)sensor_value);
 	}
 }
+
+void bios(void){
+	// Enable clock to GPIOA
+	RCC->AHB1ENR |= GPIOAEN;
+
+	// Enable clock to GPIOA
+	RCC->AHB1ENR |= GPIOAEN;
+
+	// Set PA1 input mode analog
+	GPIOA->MODER |= (1U << 2);
+	GPIOA->MODER |= (1U << 3);
+
+}
+
+
 

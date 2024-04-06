@@ -33,34 +33,34 @@ $(wildcard ../makefile.init) \
 $(wildcard ../makefile.targets) \
 
 
-BUILD_ARTIFACT_NAME := 10_adc_continuos_convertion
+BUILD_ARTIFACT_NAME := 11_adc_usart_refac
 BUILD_ARTIFACT_EXTENSION := elf
 BUILD_ARTIFACT_PREFIX :=
 BUILD_ARTIFACT := $(BUILD_ARTIFACT_PREFIX)$(BUILD_ARTIFACT_NAME)$(if $(BUILD_ARTIFACT_EXTENSION),.$(BUILD_ARTIFACT_EXTENSION),)
 
 # Add inputs and outputs from these tool invocations to the build variables 
 EXECUTABLES += \
-10_adc_continuos_convertion.elf \
+11_adc_usart_refac.elf \
 
 MAP_FILES += \
-10_adc_continuos_convertion.map \
+11_adc_usart_refac.map \
 
 SIZE_OUTPUT += \
 default.size.stdout \
 
 OBJDUMP_LIST += \
-10_adc_continuos_convertion.list \
+11_adc_usart_refac.list \
 
 
 # All Target
 all: main-build
 
 # Main-build Target
-main-build: 10_adc_continuos_convertion.elf secondary-outputs
+main-build: 11_adc_usart_refac.elf secondary-outputs
 
 # Tool invocations
-10_adc_continuos_convertion.elf 10_adc_continuos_convertion.map: $(OBJS) $(USER_OBJS) /home/leandro/DADOS/Projetos/STM32CubeIDE/workspace_1.13.1/10_adc_continuos_convertion/STM32F411RETX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "10_adc_continuos_convertion.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"/home/leandro/DADOS/Projetos/STM32CubeIDE/workspace_1.13.1/10_adc_continuos_convertion/STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="10_adc_continuos_convertion.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+11_adc_usart_refac.elf 11_adc_usart_refac.map: $(OBJS) $(USER_OBJS) /home/leandro/DADOS/Projetos/STM32CubeIDE/workspace_1.13.1/11_adc_usart_refac/STM32F411RETX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "11_adc_usart_refac.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"/home/leandro/DADOS/Projetos/STM32CubeIDE/workspace_1.13.1/11_adc_usart_refac/STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="11_adc_usart_refac.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
@@ -69,14 +69,14 @@ default.size.stdout: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
 	@echo 'Finished building: $@'
 	@echo ' '
 
-10_adc_continuos_convertion.list: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-objdump -h -S $(EXECUTABLES) > "10_adc_continuos_convertion.list"
+11_adc_usart_refac.list: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-objdump -h -S $(EXECUTABLES) > "11_adc_usart_refac.list"
 	@echo 'Finished building: $@'
 	@echo ' '
 
 # Other Targets
 clean:
-	-$(RM) 10_adc_continuos_convertion.elf 10_adc_continuos_convertion.list 10_adc_continuos_convertion.map default.size.stdout
+	-$(RM) 11_adc_usart_refac.elf 11_adc_usart_refac.list 11_adc_usart_refac.map default.size.stdout
 	-@echo ' '
 
 secondary-outputs: $(SIZE_OUTPUT) $(OBJDUMP_LIST)

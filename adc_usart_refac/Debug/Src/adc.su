@@ -1,3 +1,6 @@
-../Src/adc.c:22:6:pa1_adc_init	4	static
-../Src/adc.c:45:6:start_conversion	4	static
-../Src/adc.c:52:10:adc_read	4	static
+../Src/adc.c:20:6:enable_adc_module	4	static
+../Src/adc.c:26:6:start_continuos_conversion	4	static
+../Src/adc.c:33:10:adc_read	4	static
+../Src/adc.c:41:6:enable_adc_clock	4	static
+../Src/adc.c:46:6:add_sequence_group	16	static
+../Src/adc.c:52:6:sequence_length	16	static
